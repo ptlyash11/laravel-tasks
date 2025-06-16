@@ -119,31 +119,32 @@ return [
     |
     */
 
-    'redis' => [
+   'redis' => [
 
-        'client' => env('REDIS_CLIENT', 'phpredis'),
+    'client' => env('REDIS_CLIENT', 'phpredis'),
 
-        'options' => [
-            'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
-        ],
+    'options' => [
+        'cluster' => env('REDIS_CLUSTER', 'redis'),
+        'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
+    ],
 
-       'default' => [
-        'host' => env('AZURE_REDIS_HOST'),
-        'password' => env('AZURE_REDIS_PASSWORD'),
-        'port' => env('AZURE_REDIS_PORT'),
-        'database' => env('AZURE_REDIS_DATABASE'),
+    'default' => [
         'scheme' => 'tls',
+        'host' => env('AZURE_REDIS_HOST', '127.0.0.1'),
+        'password' => env('AZURE_REDIS_PASSWORD'),
+        'port' => env('AZURE_REDIS_PORT', 6380),
+        'database' => env('AZURE_REDIS_DATABASE', 1),
+    ],
+
+    'cache' => [
+        'scheme' => 'tls',
+        'host' => env('AZURE_REDIS_HOST', '127.0.0.1'),
+        'password' => env('AZURE_REDIS_PASSWORD'),
+        'port' => env('AZURE_REDIS_PORT', 6380),
+        'database' => env('AZURE_REDIS_DATABASE', 1),
+    ],
+
 ],
 
-        'cache' => [
-    'host' => env('AZURE_REDIS_HOST'),
-    'password' => env('AZURE_REDIS_PASSWORD'),
-    'port' => env('AZURE_REDIS_PORT'),
-    'database' => env('AZURE_REDIS_DATABASE'),
-    'scheme' => 'tls',
-  ],
-
-    ],
 
 ];
